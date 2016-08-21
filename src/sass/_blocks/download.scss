@@ -1,0 +1,92 @@
+.download {
+  @include container;
+  background-color: $bg_dark;
+  color: $c_alt;
+  text-align: center;
+  padding-top: 28px;
+  padding-bottom: 30px;
+
+  &__inner {
+    max-width: $w_container_min;
+    margin: 0 auto;
+  }
+
+  &__btn {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+  }
+
+  &__link {
+    @include text-hide;
+    padding: 18px;
+  }
+
+  &__text {
+    font-weight: $fw_light;
+    margin: 0;
+  }
+}
+
+// @media #{$mobile}
+@media #{$tablet} {
+  .download {
+    padding-top: 21px;
+    padding-bottom: 111px;
+
+    &__btn {
+      margin-bottom: 28px;
+    }
+
+    &__links {
+      margin-bottom: 18px;
+    }
+  }
+}
+
+@media #{$tab-desk} {
+  .download {
+    padding-right: 0;
+    padding-left: 0;
+    background-color: transparent;
+
+    &__text {
+      line-height: (24 / 18);
+    }
+
+    &__inner {
+      width: $w_block;
+      margin: 0;
+    }
+
+    &__text {
+      font-size: $fz_m;
+    }
+  }
+}
+
+@media #{$desktop} {
+  .download {
+    padding-top: 20px;
+    padding-bottom: 122px;
+
+
+    &__btn {
+      margin-bottom: 48px;
+      font-size: $fz_btn;
+      padding-top: 13px;
+      padding-bottom: 15px;
+    }
+
+    &__links {
+      margin-bottom: 39px;
+    }
+  }
+}

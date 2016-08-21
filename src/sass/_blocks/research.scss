@@ -1,0 +1,82 @@
+.research {
+  display: none;
+
+  &__title {
+    margin: 0;
+    color: #000;
+  }
+
+  &__text {
+    margin: 0;
+  }
+
+  &__link {
+    @include typo-link;
+    line-height: (24 / 14);
+  }
+}
+
+@media #{$tab-desk} {
+  .research {
+    display: block;
+
+    &__title {
+      font-size: $fz_xl;
+    }
+  }
+}
+
+@media #{$tablet} {
+  .research {
+    padding-top: 96px;
+    padding-bottom: 94px;
+    padding-left: 309px;
+    background:
+      transparent
+      inline("inline/icon-timer.svg")
+      left 0 top 45.5% /
+      240px auto
+      no-repeat;
+
+    &__title {
+      width: 200px;
+      margin-bottom: 10px;
+      line-height: (36 / 30);
+    }
+
+    &__text {
+      margin-bottom: 11px;
+    }
+  }
+}
+
+@media #{$desktop} {
+  .research {
+    margin-bottom: 43px;
+    padding-top: 111px;
+    padding-bottom: 114px;
+    padding-left: 365px;
+    background:
+      $bg_grey
+      inline("inline/icon-timer.svg")
+      left 0 top 21% /
+      300px auto
+      no-repeat;
+
+    &__title {
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    &__text {
+      font-size: $fz_m;
+      line-height: (30 / 18);
+      margin-bottom: 30px;
+    }
+
+    &__link {
+      font-size: $fz_m;
+      line-height: (30 / 18);
+    }
+  }
+}

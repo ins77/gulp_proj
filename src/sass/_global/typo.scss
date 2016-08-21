@@ -1,0 +1,111 @@
+@mixin typo-title($color: $c_base) {
+  font-size: $fz_l;
+  line-height: (30 / 24);
+  font-weight: $fw_light;
+  color: $color;
+
+  @media #{$tablet} {
+    font-size: $fz_xxl;
+    line-height: (48 / 40);
+  }
+
+  @media #{$desktop} {
+    font-size: $fz_xxxl;
+    line-height: (60 / 50);
+  }
+}
+
+@mixin typo-title-inner($color: $c_base) {
+  font-size: $fz_l;
+  line-height: (29 / 24);
+  font-weight: $fw_light;
+  color: $color;
+
+  @media #{$tablet} {
+    font-size: $fz_xxxl;
+    line-height: (60 / 50);
+  }
+
+  @media #{$desktop} {
+    font-size: $fz_xxxl;
+    line-height: (60 / 50);
+  }
+}
+
+
+@mixin typo-link {
+  color: $c_bright;
+
+  &:hover {
+    color: $c_base;
+  }
+
+  &:active {
+    color: rgba($c_base, 0.3);
+  }
+}
+
+@mixin typo-link-special {
+  font-size: $fz_l;
+  line-height: (30 / 24);
+  color: $c_bright;
+  text-decoration: none;
+  font-weight: $fw_light;
+  &:hover {
+    color: $c_base;
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: rgba($c_base, 0.3);
+    text-decoration: none;
+  }
+}
+
+
+@mixin typo-text {
+  font-size: $fz_base;
+  line-height: (30 / 14);
+
+  @media #{$tab-desk} {
+    font-size: $fz_m;
+    line-height: (30 / 18);
+  }
+}
+
+@mixin typo-small {
+  font-size: $fz_s;
+  line-height: 1.5;
+
+  @media #{$tablet} {
+    font-size: $fz_s
+  }
+
+  @media #{$desktop} {
+    font-size: $fz_m;
+  }
+}
+
+@mixin typo-label {
+  font-size: $fz_base;
+  line-height: (30 / 14);
+  color: $c_bright;
+  text-transform: uppercase;
+}
+
+@mixin typo-form-text {
+  font-size: $fz_m;
+  line-height: (30 / 18);
+}
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: $fz_base;
+  line-height: (24 / 14);
+  color: $c_base;
+}
+
+// @media #{$mobile}
+// @media #{$tab-desk}
+// @media #{$tablet}
+// @media #{$desktop}

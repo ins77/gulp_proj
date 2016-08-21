@@ -1,0 +1,175 @@
+.field {
+  position: relative;
+  width: 100%;
+
+  &__label {
+    @include typo-label;
+    @include text-no-overflow;
+    margin: 0;
+    display: block;
+    cursor: pointer;
+  }
+
+  &__input-wrap {
+    width: 100%;
+  }
+
+  &__input {
+    @include typo-form-text;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 1px;
+    padding-right: 20px;
+    padding-left: 20px;
+    display: block;
+    width: 100%;
+    height: 63px;
+    border: 2px solid $bc_grey-dark;
+    border-radius: $br_s;
+    transition: $trs_short;
+
+    &:hover {
+      border-color: $c_base;
+    }
+
+    &:focus {
+      border-color: $c_bright;
+      outline: none;
+    }
+  }
+
+  &--phone &__input,
+  &--email &__input {
+    padding-right: 50px;
+  }
+
+}
+
+@media #{$mobile} {
+  .field {
+    &__label {
+      padding-bottom: 5px;
+      padding-right: 20px;
+      padding-left: 22px;
+    }
+  }
+}
+
+@media #{$tablet} {
+  .field {
+    &--text &__input {
+      padding-bottom: 2px;
+    }
+
+    &--phone &__input,
+    &--email &__input {
+      padding-bottom: 3px;
+    }
+  }
+}
+
+@media #{$desktop} {
+  .field {
+    &--text &__input {
+      padding-bottom: 3px;
+    }
+
+    &--phone &__input,
+    &--email &__input {
+      padding-bottom: 2px;
+    }
+  }
+}
+
+/*
+████████ ██████
+   ██    ██   ██
+   ██    ██   ██
+   ██    ██   ██
+   ██    ██████
+*/
+
+@media #{$tab-desk} {
+  .field {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    // fluid inputs
+    &--text {
+      align-items: center;
+    }
+
+    &--text &__label {
+      flex-shrink: 0;
+      padding-right: 20px;
+    }
+
+    &--text &__input-wrap {
+      flex-basis: 100%;
+      flex-shrink: 1;
+    }
+
+    &--text &__input {
+      width: 100%;
+    }
+
+    // contact fields
+
+    &--phone,
+    &--email {
+      position: relative;
+      flex-direction: column;
+    }
+
+    &--phone &__label,
+    &--email &__label {
+      order: 2;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+
+    &--phone &__input,
+    &--email &__input {
+      order: 1;
+    }
+
+    // input icons
+    &--phone &__input-wrap,
+    &--email &__input-wrap {
+      position: relative;
+    }
+
+    &--phone &__input-wrap,
+    &--email &__input-wrap {
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        background:
+          transparent
+          right center / auto
+          no-repeat;
+      }
+    }
+
+    &--phone &__input-wrap {
+      &::after {
+        background-image: inline("inline/icon-phone.svg");
+      }
+    }
+
+    &--email &__input-wrap {
+      &::after {
+        background-image: inline("inline/icon-mail.svg");
+      }
+    }
+  }
+}

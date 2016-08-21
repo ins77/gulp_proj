@@ -1,0 +1,219 @@
+.tariffs {
+
+  &__table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-bottom: 2px solid #ccc;
+  }
+
+  /*
+  ████████ ██ ████████ ██      ███████
+     ██    ██    ██    ██      ██
+     ██    ██    ██    ██      █████
+     ██    ██    ██    ██      ██
+     ██    ██    ██    ███████ ███████
+  */
+
+  &__row-name {
+    @include text-hide;
+    background-color: $bg_grey;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    background-color: transparent;
+  }
+
+  &__title {
+    padding-top: 16px;
+    padding-bottom: 21px;
+    border: 2px solid #f2f2f2;
+    color: #fff;
+    background-color: $bg_base;
+
+    &--hit {
+      background-image: inline("inline/icon-hit.png");
+      background-repeat: no-repeat;
+      background-position: left -3px top -8px;
+    }
+  }
+
+  &__name {
+    display: block;
+    font-size: $fz_m;
+    line-height: (30 / 18);
+    text-transform: uppercase;
+    font-weight: $fw_bold;
+  }
+
+  &__price {
+    display: block;
+    font-size: $fz_l;
+    line-height: (30 / 24);
+    font-weight: $fw_light;
+  }
+
+  /*
+ ██████ ███████ ██      ██      ███████
+██      ██      ██      ██      ██
+██      █████   ██      ██      ███████
+██      ██      ██      ██           ██
+ ██████ ███████ ███████ ███████ ███████
+*/
+
+  &__option-value,
+  &__option-name {
+    padding-top: 13px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    vertical-align: middle;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    line-height: (30 / 14);
+  }
+
+  &__option-value {
+    span {
+      @include text-hide;
+    }
+
+    svg {
+      vertical-align: middle;
+    }
+
+
+    .svg-icon-yes {
+      fill: #3dc644;
+      width: 33px;
+      height: 23px;
+    }
+    .svg-icon-no {
+      fill: #f25b26;
+      width: 27px;
+      height: 27px;
+    }
+  }
+}
+
+/*
+███    ███  ██████
+████  ████ ██    ██
+██ ████ ██ ██    ██
+██  ██  ██ ██ ▄▄ ██
+██      ██  ██████
+               ▀▀
+*/
+
+/* ============================================>>>>>
+= MOBILE =
+===============================================>>>>> */
+
+@media #{$mobile} {
+  .tariffs {
+    margin-right: -($offset_mobile);
+    margin-left: -($offset_mobile);
+    padding-top: 89px;
+    padding-bottom: 43px;
+    &__table {
+      width: 100%;
+    }
+
+    &__row-name,
+    &__option-name {
+      display: none;
+    }
+
+    &__option-value {
+      &::before {
+        content: attr(data-option);
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(100% - 50px);
+        text-transform: uppercase;
+      }
+      svg {
+        float: right;
+        width: 32px;
+      }
+    }
+  }
+}
+
+/* --------------------------------------------<<<<<
+= End of MOBILE =
+===============================================<<<<< */
+
+@media #{$tablet} {
+  .tariffs {
+    padding-top: 87px;
+    padding-bottom: 68px;
+
+    &__title {
+      padding-top: 15px;
+      padding-bottom: 9px;
+    }
+
+    &__name {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 2px;
+    }
+
+    &__price {
+      font-size: $fz_m;
+      line-height: 1.5;
+    }
+
+    &__option-value,
+    &__option-name {
+      padding-top: 7px;
+      padding-bottom: 8px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}
+
+@media #{$tab-desk} {
+  .tariffs {
+    &__table {
+      width: 100%;
+    }
+
+    &__option-value {
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+}
+
+@media #{$desktop} {
+  .tariffs {
+    padding-top: 148px;
+    padding-bottom: 95px;
+
+    &__title {
+      padding-top: 16px;
+      padding-bottom: 18px;
+
+      &--hit {
+        background-position: left 0 top 0;
+      }
+    }
+
+    &__name {
+      margin-bottom: 2px;
+    }
+
+    &__option-name {
+      font-size: $fz_m;
+      line-height: (30 / 18);
+      padding-top: 14px;
+      padding-bottom: 15px;
+    }
+    &__option-value {
+      padding-top: 14px;
+      padding-bottom: 15px;
+    }
+
+  }
+}
