@@ -1,5 +1,6 @@
 .logo {
   @include text-hide;
+
   position: relative;
   flex-shrink: 0;
   width: 76px;
@@ -113,9 +114,11 @@
     &__star {
       display: block;
     }
+
     &__glasses {
       display: none;
     }
+    
     &__glasses-part {
       display: block;
     }

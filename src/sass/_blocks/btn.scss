@@ -19,6 +19,7 @@
       border-color: $c_bright;
       background-color: $c_bright;
     }
+
     &:active {
       color: rgba($c_alt, 0.3);
       border-color: $c_bright;
@@ -35,6 +36,7 @@
       border-color: rgba($c_base, 0.3);
       background-color: transparent;
     }
+
     &:active {
       color: rgba($c_alt, 0.3);
       border-color: rgba($c_base, 0.3);
@@ -51,6 +53,7 @@
       border-color: $c_alt;
       background-color: $bg_alt;
     }
+
     &:active {
       color: rgba($c_bright, 0.3);
       border-color: $c_alt;
@@ -68,11 +71,13 @@
       border-color: $bg_green-dark;
       background-color: $bg_green-dark;
     }
+
     &:active {
       color: rgba($c_alt, 0.3);
       border-color: $bg_grey-dark;
       background-color: $bg_grey-dark;
     }
+
     &[disabled] {
       color: $c_alt;
       background-color: #e5e5e5;

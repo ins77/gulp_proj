@@ -5,6 +5,7 @@
   &__label {
     @include typo-label;
     @include text-no-overflow;
+
     margin: 0;
     display: block;
     cursor: pointer;
@@ -16,6 +17,7 @@
 
   &__input {
     @include typo-form-text;
+    
     margin: 0;
     padding-top: 0;
     padding-bottom: 1px;
@@ -42,7 +44,6 @@
   &--email &__input {
     padding-right: 50px;
   }
-
 }
 
 @media #{$mobile} {

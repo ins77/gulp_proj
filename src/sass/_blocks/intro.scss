@@ -18,8 +18,10 @@ $bg_hand:
 
   &__title-wrap {
     @include container;
+
     padding-top: 96px;
     padding-bottom: 57px;
+
     &--photo {
       padding-bottom: 85px;
     }
@@ -27,17 +29,20 @@ $bg_hand:
 
   &__title {
     @include typo-title-inner($c_alt);
+
     margin: 0;
     padding: 0;
   }
 
   &__text-wrap {
     @include container;
+
     background-color: $bg_alt;
   }
 
   &--index &__title {
     @include typo-title($c_alt);
+
     margin: 0;
   }
 }
@@ -97,6 +102,7 @@ $bg_hand:
     &__title-wrap {
       padding-top: 180px;
       padding-bottom: 80px;
+      
       &--photo {
         padding-bottom: 140px;
       }

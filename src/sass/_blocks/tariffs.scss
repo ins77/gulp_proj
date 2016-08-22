@@ -16,6 +16,7 @@
 
   &__row-name {
     @include text-hide;
+
     background-color: $bg_grey;
     border-top: 2px solid transparent;
     border-left: 2px solid transparent;
@@ -175,6 +176,7 @@
 
 @media #{$tab-desk} {
   .tariffs {
+
     &__table {
       width: 100%;
     }
@@ -210,6 +212,7 @@
       padding-top: 14px;
       padding-bottom: 15px;
     }
+    
     &__option-value {
       padding-top: 14px;
       padding-bottom: 15px;

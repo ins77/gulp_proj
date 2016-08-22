@@ -1,5 +1,6 @@
 .editor {
   @include container;
+  
   background-color: $bg_grey;
   padding-top: 20px;
   padding-bottom: 30px;
@@ -32,6 +33,7 @@
 
   &__label {
     @include text-hide;
+
     display: block;
   }
 
@@ -50,6 +52,7 @@
     cursor: pointer;
     fill: rgba($c_base, 0.3);
     transition: $trs_base;
+
     &:hover {
       fill: rgba($c_base, 0.5);
     }
@@ -82,6 +85,7 @@
     border-radius: 50%;
     cursor: pointer;
     transition: $trs_short;
+
     &:active {
       background-color: $c_bright;
     }
@@ -126,6 +130,7 @@
 
     &__tools {
       position: relative;
+
       &::after {
         content: "";
         position: absolute;
@@ -237,6 +242,7 @@
       padding-top: 9px;
       padding-bottom: 9px;
       margin-bottom: 33px;
+
       &::after {
         content: "";
         position: absolute;
@@ -284,6 +290,7 @@
   .editor {
     margin-bottom: 2px;
     padding-top: 57px;
+
     &__col {
       padding-left: 35px;
     }
@@ -338,6 +345,7 @@
     padding-bottom: 0;
     background-color: transparent;
     margin-bottom: 32px;
+
     &__inner {
       background-color: $bg_grey;
       padding-top: 57px;

@@ -51,6 +51,7 @@
   color: $c_bright;
   text-decoration: none;
   font-weight: $fw_light;
+
   &:hover {
     color: $c_base;
     text-decoration: underline;
@@ -78,7 +79,7 @@
   line-height: 1.5;
 
   @media #{$tablet} {
-    font-size: $fz_s
+    font-size: $fz_s;
   }
 
   @media #{$desktop} {

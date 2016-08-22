@@ -1,5 +1,6 @@
 .download {
   @include container;
+
   background-color: $bg_dark;
   color: $c_alt;
   text-align: center;
@@ -26,6 +27,7 @@
 
   &__link {
     @include text-hide;
+
     padding: 18px;
   }
 

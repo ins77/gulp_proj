@@ -21,6 +21,7 @@
   &__title {
     @include typo-label;
     @include text-no-overflow;
+    
     margin: 0;
     display: block;
     padding: 0 20px;
@@ -50,7 +51,7 @@
 
   &__textarea:hover,
   &__textarea:active,
-  &__textarea:focuse {
+  &__textarea:focus {
     outline: none;
   }
 
@@ -165,6 +166,7 @@
     &__item {
       &--name {
         margin-bottom: 16px;
+
         &:last-child {
           padding-top: 3px;
         }
@@ -196,9 +198,11 @@
 @media #{$tab-desk} {
   .form {
     width: 100%;
+
     &__fieldset {
       position: relative;
     }
+
     &__title {
       position: absolute;
       top: 0;
@@ -208,9 +212,11 @@
       padding: 0 25px;
       white-space: nowrap;
     }
+
     &__footer {
       align-items: center;
     }
+
     &__btn {
       width: $w_block;
     }
@@ -270,6 +276,7 @@
     &__item {
       &--name {
         margin-bottom: 52px;
+
         &:last-child {
           padding-top: 1px;
         }
@@ -376,6 +383,7 @@
     &__item {
       &--name {
         margin-bottom: 52px;
+
         &:last-child {
           padding-top: 1px;
         }

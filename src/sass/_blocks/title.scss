@@ -1,13 +1,16 @@
 .title {
   @include typo-title;
+  
   margin: 0;
   padding: 0;
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
+
   span {
     display: block;
     margin-bottom: 26px;
+
     &:last-of-type {
       margin-bottom: 0;
     }

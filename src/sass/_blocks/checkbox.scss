@@ -10,6 +10,7 @@
 
   &__label {
     @include typo-form-text;
+
     margin: 0;
     display: block;
     padding-left: 69px;
@@ -78,7 +79,6 @@
 
 @media #{$tab-desk} {
   .checkbox {
-
     &__label {
       padding-left: 59px;
     }

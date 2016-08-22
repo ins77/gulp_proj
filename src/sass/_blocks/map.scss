@@ -3,6 +3,7 @@
 
   &__container {
     @include container;
+
     position: relative;
     min-height: 200px;
     background:
@@ -12,6 +13,7 @@
       cover
       no-repeat;
   }
+
   &__ya {
     position: absolute;
     top: 0;
@@ -34,6 +36,7 @@
     &__container {
       min-height: 380px;
     }
+
     &__ya {
       height: 380px;
     }
@@ -45,6 +48,7 @@
     &__container {
       min-height: 505px;
     }
+    
     &__ya {
       height: 505px;
     }
