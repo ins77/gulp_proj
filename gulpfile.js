@@ -34,6 +34,7 @@ var imagemin = require('gulp-imagemin')
 
 var argv = require('minimist')(process.argv.slice(2));
 var isOnProduction = !!argv.production;
+// var isOnProduction = !argv.production;
 var buildPath = isOnProduction ? 'build' : 'tmp';
 var srcPath = 'src';
 var dataPath = path.join(srcPath, 'pug/_data/');
