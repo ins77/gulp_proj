@@ -25,7 +25,8 @@ var reporter = require('postcss-reporter');
 var syntax_scss = require('postcss-scss');
 var stylelint = require('stylelint');
 
-var jade = require('gulp-jade');
+// var jade = require('gulp-jade');
+var pug = require('gulp-pug');
 
 var uglify = require('gulp-uglify');
 var svg_sprite = require('gulp-svg-sprite');
@@ -35,7 +36,7 @@ var argv = require('minimist')(process.argv.slice(2));
 var isOnProduction = !!argv.production;
 var buildPath = isOnProduction ? 'build' : 'tmp';
 var srcPath = 'src';
-var dataPath = path.join(srcPath, 'jade/_data/');
+var dataPath = path.join(srcPath, 'pug/_data/');
 var ghPages = require('gulp-gh-pages');
 
 /*
@@ -46,7 +47,7 @@ var ghPages = require('gulp-gh-pages');
  █████  ██   ██ ██████  ███████
 */
 
-gulp.task('jade', function() {
+gulp.task('pug', function() {
   var siteData = {};
   if (fs.existsSync(dataPath)) {
     siteData = foldero(dataPath, {
@@ -66,11 +67,11 @@ gulp.task('jade', function() {
     });
   }
 
-  return gulp.src('_pages/*.jade', {cwd: path.join(srcPath, 'jade')})
+  return gulp.src('_pages/*.pug', {cwd: path.join(srcPath, 'pug')})
     .pipe(plumber({
       errorHandler: notify.onError('Error:  <%= error.message %>')
     }))
-    .pipe(jade({
+    .pipe(pug({
       locals: {
         site: {
           data: siteData
@@ -80,7 +81,7 @@ gulp.task('jade', function() {
     }))
     .pipe(gulp.dest(path.join(buildPath)))
     .pipe(notify({
-      message: 'Jade: <%= file.relative %>',
+      message: 'Pug: <%= file.relative %>',
       sound: 'Pop'
     }));
 });
@@ -229,7 +230,7 @@ gulp.task('style', ['styletest'], function() {
         loadPaths: [path.join(srcPath, 'img')]
       }),
       cssnano({
-        safe:true
+        safe: true
       })
     ]))
     .pipe(rename('style.min.css'))
@@ -290,7 +291,7 @@ gulp.task('build', ['del'], function (callback) {
   runSequence(
     'svg',
     'img',
-    ['jade', 'js', 'font'],
+    ['pug', 'js', 'font'],
     'style',
     callback);
 })
@@ -328,6 +329,6 @@ gulp.task('default', allTasks, function() {
     gulp.watch(['!svg-sprite', '!svg-sprite/**', '!inline', '!inline/**', '**/*.{jpg,png,svg}'], {cwd: path.join(srcPath, 'img')}, ['img', server.reload]);
     gulp.watch('**/*{woff,woff2}', {cwd: path.join(srcPath, 'fonts')}, ['font', server.reload]);
     gulp.watch('**/*.scss', {cwd: path.join(srcPath, 'sass')}, ['style', server.stream]);
-    gulp.watch('**/*.*', {cwd: path.join(srcPath, 'jade')}, ['jade', server.reload]);
+    gulp.watch('**/*.*', {cwd: path.join(srcPath, 'pug')}, ['pug', server.reload]);
   }
 });
