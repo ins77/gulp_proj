@@ -105,7 +105,6 @@
 
 @media #{$mobile} {
   .slider {
-
     &--tariffs {
       padding-right: $offset_mobile;
       padding-left: $offset_mobile;
@@ -115,7 +114,6 @@
 
 @media #{$tab-desk} {
   .slider {
-
     &--tariffs {
       // no controls - no padding
       padding-bottom: 0;
@@ -187,7 +185,7 @@
     &__control:hover::before {
       border-color: rgba($c_base, 0.6);
     }
-    
+
     &__control:active::before {
       border-color: rgba($c_base, 0.1);
     }

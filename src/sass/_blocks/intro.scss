@@ -102,7 +102,7 @@ $bg_hand:
     &__title-wrap {
       padding-top: 180px;
       padding-bottom: 80px;
-      
+
       &--photo {
         padding-bottom: 140px;
       }
@@ -185,6 +185,7 @@ $bg_hand:
 @media #{$desktop} {
   .intro {
     background-image: url("../img/bg/bg-back-desktop.jpg");
+
     &__title-wrap {
       padding-top: 173px;
       padding-bottom: 101px;

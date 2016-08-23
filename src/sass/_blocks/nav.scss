@@ -214,9 +214,11 @@ $gutter_v: 22px;
       line-height: 1;
       text-transform: uppercase;
       font-weight: 700;
+
       &:hover {
         color: $c_bright;
       }
+
       &:active {
         color: rgba($c_bright, 0.3);
       }
@@ -271,7 +273,7 @@ $gutter_v: 22px;
       &:hover {
         box-shadow: 0 2px 0 0 $c_alt;
       }
-      
+
       &:active {
         color: rgba($c_alt, 0.3);
         box-shadow: none;

@@ -21,7 +21,7 @@
 
   &__info {
     @include typo-small;
-    
+
     margin: 0;
     display: none;
   }
@@ -44,7 +44,6 @@
 
 @media #{$tab-desk} {
   .review {
-
     &__info {
       display: block;
     }

@@ -1,5 +1,4 @@
 .tariffs {
-
   &__table {
     table-layout: fixed;
     border-collapse: collapse;
@@ -87,6 +86,7 @@
       width: 33px;
       height: 23px;
     }
+
     .svg-icon-no {
       fill: #f25b26;
       width: 27px;
@@ -114,6 +114,7 @@
     margin-left: -($offset_mobile);
     padding-top: 89px;
     padding-bottom: 43px;
+
     &__table {
       width: 100%;
     }
@@ -131,6 +132,7 @@
         width: calc(100% - 50px);
         text-transform: uppercase;
       }
+
       svg {
         float: right;
         width: 32px;
@@ -176,7 +178,6 @@
 
 @media #{$tab-desk} {
   .tariffs {
-
     &__table {
       width: 100%;
     }
@@ -212,11 +213,10 @@
       padding-top: 14px;
       padding-bottom: 15px;
     }
-    
+
     &__option-value {
       padding-top: 14px;
       padding-bottom: 15px;
     }
-
   }
 }
