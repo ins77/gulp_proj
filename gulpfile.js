@@ -32,6 +32,9 @@ var uglify = require('gulp-uglify');
 var svg_sprite = require('gulp-svg-sprite');
 var imagemin = require('gulp-imagemin')
 
+// var spritesmith = 'gulp.spritesmith';
+var spritesmith = require('gulp.spritesmith-multi');
+
 var argv = require('minimist')(process.argv.slice(2));
 var isOnProduction = !!argv.production;
 // var isOnProduction = !argv.production;
@@ -41,11 +44,7 @@ var dataPath = path.join(srcPath, 'pug/_data/');
 var ghPages = require('gulp-gh-pages');
 
 /*
-     ██  █████  ██████  ███████
-     ██ ██   ██ ██   ██ ██
-     ██ ███████ ██   ██ █████
-██   ██ ██   ██ ██   ██ ██
- █████  ██   ██ ██████  ███████
+  --- JADE ---
 */
 
 gulp.task('pug', function() {
@@ -89,11 +88,7 @@ gulp.task('pug', function() {
 
 
 /*
-     ██ ███████
-     ██ ██
-     ██ ███████
-██   ██      ██
- █████  ███████
+  --- JS ---
 */
 
 gulp.task('js', function() {
@@ -114,15 +109,11 @@ gulp.task('js', function() {
 
 
 /*
-██ ███    ███  ██████
-██ ████  ████ ██
-██ ██ ████ ██ ██   ███
-██ ██  ██  ██ ██    ██
-██ ██      ██  ██████
+  --- IMG ---
 */
 
 gulp.task('img', function() {
-  gulp.src(['!svg-sprite', '!svg-sprite/**', '!inline', '!inline/**', '**/*.{jpg,png,svg}'], {cwd: path.join(srcPath, 'img')})
+  gulp.src(['!svg-sprite', '!svg-sprite/**', '!inline', '!inline/**', '!sprites', '!sprites/**', '**/*.{jpg,png,svg}'], {cwd: path.join(srcPath, 'img')})
     .pipe(imagemin({
       progressive: true}))
     .pipe(gulp.dest(path.join(buildPath, 'img')))
@@ -130,11 +121,47 @@ gulp.task('img', function() {
 
 
 /*
-███████ ██    ██  ██████
-██      ██    ██ ██
-███████ ██    ██ ██   ███
-     ██  ██  ██  ██    ██
-███████   ████    ██████
+  --- SPRITES ---
+*/
+
+// var cwd = path.join(__dirname, '..');
+var spritesDirPath = 'src/img/sprites';
+var imgPath = '../img/sprites/';
+var tmplName = 'scss_retina.template.handlebars';
+var tmplPath = './node_modules/spritesheet-templates/lib/templates/';
+var cssTemplate = tmplPath + tmplName;
+
+gulp.task('sprites', function() {
+  var spriteData = gulp.src(['src/img/sprites/**/*.png', '!src/img/sprites/*.png'])
+    .pipe(plumber({
+      errorHandler: notify.onError('Error: <%= error.message %>')
+    }))
+    .pipe(spritesmith({
+      spritesmith(options) {
+        options.imgPath = imgPath + options.imgName;
+        options.retinaImgPath = imgPath + options.retinaImgName;
+        options.cssName = options.cssName.replace(/\.css$/, '.scss');
+        options.cssFormat = 'scss';
+        options.cssTemplate = cssTemplate;
+        options.algorithm = 'binary-tree';
+        options.padding = 8;
+
+        return options;
+      }
+    }));
+
+  spriteData.img.pipe(gulp.dest(path.join(buildPath, 'img/sprites')));
+  spriteData.css.pipe(gulp.dest('src/sass/_global/sprites'));
+  // var imgStream = spriteData.img.pipe(path.join(buildPath, 'images/sprites'));
+  // var styleStream = spriteData.css.pipe(gulp.dest('src/sass/global/sprites'));
+  //
+  // return merge(imgStream, styleStream);
+});
+
+
+
+/*
+  --- SVG ---
 */
 
 gulp.task('svg', function() {
@@ -163,11 +190,7 @@ gulp.task('svg', function() {
 
 
 /*
-███████  ██████  ███    ██ ████████
-██      ██    ██ ████   ██    ██
-█████   ██    ██ ██ ██  ██    ██
-██      ██    ██ ██  ██ ██    ██
-██       ██████  ██   ████    ██
+  --- FONT ---
 */
 
 gulp.task('font', function() {
@@ -177,11 +200,7 @@ gulp.task('font', function() {
 
 
 /*
-███████ ████████ ██    ██ ██      ███████ ████████ ███████ ███████ ████████
-██         ██     ██  ██  ██      ██         ██    ██      ██         ██
-███████    ██      ████   ██      █████      ██    █████   ███████    ██
-     ██    ██       ██    ██      ██         ██    ██           ██    ██
-███████    ██       ██    ███████ ███████    ██    ███████ ███████    ██
+  --- STYLETEST ---
 */
 
 gulp.task('styletest', function() {
@@ -192,7 +211,7 @@ gulp.task('styletest', function() {
     })
   ];
 
-  return gulp.src(['!_global/svg-sprite.scss', '**/*.scss'], {cwd: path.join(srcPath, 'sass')})
+  return gulp.src(['!_global/svg-sprite.scss', '!_global/sprites/*.scss', '**/*.scss'], {cwd: path.join(srcPath, 'sass')})
     .pipe(plumber())
     .pipe(postcss(processors, {
       syntax: syntax_scss
@@ -201,11 +220,7 @@ gulp.task('styletest', function() {
 
 
 /*
-███████ ████████ ██    ██ ██      ███████
-██         ██     ██  ██  ██      ██
-███████    ██      ████   ██      █████
-     ██    ██       ██    ██      ██
-███████    ██       ██    ███████ ███████
+  --- STYLE ---
 */
 
 gulp.task('style', ['styletest'], function() {
@@ -247,11 +262,7 @@ gulp.task('style', ['styletest'], function() {
 
 
 /*
-██████  ███████ ██
-██   ██ ██      ██
-██   ██ █████   ██
-██   ██ ██      ██
-██████  ███████ ███████
+  --- DEL ---
 */
 
 
@@ -262,11 +273,7 @@ gulp.task('del', function() {
 });
 
 /*
-███████ ███████ ██████  ██    ██ ███████
-██      ██      ██   ██ ██    ██ ██
-███████ █████   ██████  ██    ██ █████
-     ██ ██      ██   ██  ██  ██  ██
-███████ ███████ ██   ██   ████   ███████
+  --- SERVE ---
 */
 
 gulp.task('serve', function() {
@@ -281,16 +288,13 @@ gulp.task('serve', function() {
 });
 
 /*
-██████  ██    ██ ██ ██      ██████
-██   ██ ██    ██ ██ ██      ██   ██
-██████  ██    ██ ██ ██      ██   ██
-██   ██ ██    ██ ██ ██      ██   ██
-██████   ██████  ██ ███████ ██████
+  --- BUILD ---
 */
 
 gulp.task('build', ['del'], function (callback) {
   runSequence(
     'svg',
+    'sprites',
     'img',
     ['pug', 'js', 'font'],
     'style',
@@ -298,11 +302,7 @@ gulp.task('build', ['del'], function (callback) {
 })
 
 /*
-██████  ███████ ██████  ██       ██████  ██    ██
-██   ██ ██      ██   ██ ██      ██    ██  ██  ██
-██   ██ █████   ██████  ██      ██    ██   ████
-██   ██ ██      ██      ██      ██    ██    ██
-██████  ███████ ██      ███████  ██████     ██
+  --- DEPLOY ---
 */
 
 gulp.task('deploy', function() {
@@ -311,11 +311,7 @@ gulp.task('deploy', function() {
 });
 
 /*
-██████  ███████ ███████  █████  ██    ██ ██   ████████
-██   ██ ██      ██      ██   ██ ██    ██ ██      ██
-██   ██ █████   █████   ███████ ██    ██ ██      ██
-██   ██ ██      ██      ██   ██ ██    ██ ██      ██
-██████  ███████ ██      ██   ██  ██████  ███████ ██
+  --- DEFAULT ---
 */
 
 var allTasks = ['build'];
