@@ -1,48 +1,222 @@
-# Личный проект «Пинк» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
+# CSSSR Project Template
+**Шаблон проекта для быстрого старта**
 
-* Студент: [Яна Крикливая](https://up.htmlacademy.ru/adaptive/6/user/124052)
-* Наставник: [Андрей Алексеев](https://htmlacademy.ru/profile/id4596)
 
----
+## Старт проекта
 
-_Не удаляйте и не обращайте внимание на файлы:_<br>
-_`.editorconfig`, `.gitignore`, `.travis.yml`, `package.json`._
+### Склонируй репозиторий и перейди в папку проекта
+```
+git clone git@github.com:CSSSR/csssr-project-template.git new-project && cd new-project
+```
 
----
+### Установи модули
+```
+npm i
+```
 
-### Памятка
+### Запусти шаблон
+```
+npm start
+```
 
-#### 1. Зарегистрируйтесь на Гитхабе
 
-Если у вас ещё нет аккаунта на [github.com](https://github.com/join), скорее зарегистрируйтесь.
+## Команды для запуска
 
-#### 2. Создайте форк
+### Запуск с отслеживанием изменений
+```
+npm start
+```
 
-Откройте репозиторий и нажмите кнопку «Fork» в правом верхнем углу. Репозиторий из Академии скопируется в ваш аккаунт.
+### Создание нового блока
+Для создания нескольких блоков, названия нужно указывать через пробел.
+```
+npm run make-block [имя-блока] [имя-блока]
+```
 
-<img width="769" alt="" src="https://cloud.githubusercontent.com/assets/10909/12391938/5b3183f8-bdfc-11e5-888b-fa74dcf4d829.jpg">
+### Сборка в папку `dist`
+```
+npm run build
+```
 
-Получится вот так:
+### Production cборка в папку `dist`
+```
+npm run production
+```
 
-<img width="769" alt="" src="https://cloud.githubusercontent.com/assets/10909/12391937/5b2fc266-bdfc-11e5-811d-dc5e1057ad87.jpg">
+### Локальный сервер на другом порте
+```
+PORT=9000 npm start
+```
 
-#### 3. Клонируйте репозиторий на свой компьютер
+### Уведомления об ошибках `ESLint`
+```
+NOTIFY=true npm start
+```
 
-Будтьте внимательны: нужно клонировать свой репозиторий (форк), а не репозиторий Академии. Нажмите кнопку с иконкой компьютера и стрелкой, чтобы клонировать репозиторий через программу [GitHub Desktop](https://desktop.github.com):
+### Расшарить локальный сервер
+```
+TUNNEL=true npm start
+```
 
-<img width="769" alt="" src="https://cloud.githubusercontent.com/assets/10909/12391902/17d49924-bdfc-11e5-8864-05fbcbddbb90.jpg">
+### Открыть ссылку в браузере по умолчанию
+```
+OPEN=true npm start
+```
 
-Программа клонирует репозиторий на ваш компьютер и подготовит всё необходимое для старта работы.
+### Собрать архив из папки `dist`
+```
+npm run zip
+```
 
-#### 4. Начинайте обучение!
+### Очистка папки `dist`
+```
+npm run clean
+```
 
----
+### Деплой всего содержимого папки `dist` в ветку `dist`
+```
+npm run deploy
+```
 
-<a href="https://htmlacademy.ru/intensive/adaptive"><img align="left" width="50" height="50" alt="HTML Academy" src="https://up.htmlacademy.ru/static/img/intensive/adaptive/logo-for-github.svg"></a>
 
-Репозиторий создан для обучения на интенсивном онлайн‑курсе «[Продвинутый HTML и CSS](https://htmlacademy.ru/intensive/adaptive)» от [HTML Academy](https://htmlacademy.ru).
+## Структура папок и файлов
+```
+├── app/                       # Исходники
+│   ├── blocks/                # Блоки
+│   │   └── block/             # Блок
+│   │       ├── block.jade     # Разметка блока
+│   │       ├── block.js       # Скрипт блока
+│   │       └── block.styl     # Стили блока
+│   ├── data/                  # Данные в формате JSON
+│   ├── pages/                 # Страницы
+│   │   └── index.jade         # Разметка страницы
+│   ├── icons/                 # SVG иконки для генерации векторного спрайта
+│   ├── sprites/               # PNG иконки для генерации растрового спрайта
+│   ├── resources/             # Статические файлы для копирования в dist
+│   ├── scripts/               # Скрипты
+│   │   └── app.js             # Главный скрипт
+│   └── styles/                # Стили
+│       ├── helpers/           # Помощники
+│       │   ├── fonts.styl     # Подключение шрифтов
+│       │   ├── mixins.styl    # Примеси
+│       │   ├── optimize.styl  # Сброс стилей и фиксы
+│       │   ├── svg-size.styl  # Переменные с размерами SVG иконок (автосборка)
+│       │   └── variables.styl # Переменные
+│       ├── sprites/           # Переменные с данными PNG спрайтов (автосборка)
+│       └── app.styl           # Главный стилевой файл
+├── dist/                      # Сборка (автогенерация)
+│   ├── assets/                # Подключаемые ресурсы
+│   │   ├── fonts/             # Шрифты
+│   │   ├── images/            # Изображения
+│   │   │   └── sprites/       # Спрайты (автогенерация)
+│   │   ├── scripts/           # Скрипты
+│   │   └── styles/            # Стили
+│   └── index.html             # Страница
+├── tasks/                     # Подключаемые скрипты с задачами для gulpfile.babel.js
+│   ├── copy.js                # Копирование
+│   ├── default.js             # Итоговые списки задач по умолчанию
+│   ├── deploy.js              # Деплой в ветку dist
+│   ├── icons.js               # Сборка SVG иконок в один файл
+│   ├── scripts.js             # Сборка ES2015 скриптов в Webpack
+│   ├── semver.js              # Обновление версии шаблона
+│   ├── server.js              # Запуск локального сервера
+│   ├── sprite.js              # Сборка спрайтов и CSS переменных
+│   ├── styles.js              # Сборка стилей
+│   ├── templates.js           # Сборка страниц из Jade шаблонов
+│   ├── watch.js               # Отслеживание изменений и запуск задач
+│   └── zip.js                 # Архивация папки dist
+├── .csscomb.json              # Конфигурация форматирования CSS
+├── .eslintrc                  # Конфигурация проверки JavaScript в ESLint
+├── .editorconfig              # Конфигурация настроек редактора кода
+├── .gitignore                 # Список исключённых файлов из Git
+├── browserlist                # Список версий браузеров для Autoprefixer
+├── gulpfile.babel.js          # Файл для запуска Gulp.js
+├── make-block.js              # Утилита создания новых блоков
+├── package.json               # Список модулей и прочей информации
+├── readme.md                  # Документация шаблона
+└── webpack.conf.js            # Конфигурация Webpack.js
+```
 
-[travis-image]: https://travis-ci.org/htmlacademy-adaptive/124052-pink.svg?branch=master
-[travis-url]: https://travis-ci.org/htmlacademy-adaptive/124052-pink
-[dependency-image]: https://david-dm.org/htmlacademy-adaptive/124052-pink.svg?style=flat-square
-[dependency-url]: https://david-dm.org/htmlacademy-adaptive/124052-pink
+
+## Как собираются и используются PNG спрайты
+
+В шаблоне предусмотрена сборка нескольких PNG спрайтов и их данных в CSS переменные.
+
+### Добавление PNG иконок
+
+Для создания спрайта нужно добавить папку в `app/sprites` и в неё PNG иконки. Важно, чтобы иконки были с чётными высотой и шириной кратными двум. Retina иконки добавлять в эту папку рядом с обычными и в конце названия файла добавить `@2x`, например:
+```
+└── app/
+    └── sprites/
+        └── emoji/
+            ├── grinning.png
+            ├── grinning@2x.png
+            ├── joy.png
+            ├── joy@2x.png
+            ├── smile.png
+            └── smile@2x.png
+```
+
+### Сборка спрайта
+
+* В папке `dist/assets/images/sprites` появятся два спрайта: обычный и Retina с `@2x` и в `app/styles/sprites` один стилевой файл с примесями. Все файлы будут с такими же названиями, как у папки, в которой находятся его иконки. Например:
+```
+├── app/
+│    └── styles/
+│       └── sprites/
+│           └── emoji.styl
+└── dist/
+    └── assets/
+        └── images/
+            └── sprites/
+                ├── emoji.png
+                └── emoji@2x.png
+
+```
+
+* В сборочных папках останутся только актуальные спрайты и стили в случае, если удалить исходные папки с иконками.
+
+### Использование спрайтов
+
+#### Retina спрайты
+
+Для подключения иконки используется примесь `retinaSprite` со значением `$icon_group`, где `icon` это название PNG иконки, например:
+```css
+.joy
+    retinaSprite $joy_group
+```
+
+В собранном виде в CSS добавятся обычный спрайт и медиа-запрос, чтобы отображать Retina спрайт только при необходимости и это будет выглядеть так:
+```css
+.joy {
+    background-image: url("../images/sprites/emoji.png");
+    background-position: 32px 0px;
+    width: 24px;
+    height: 24px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .joy {
+        background-image: url("../images/sprites/emoji@2x.png");
+        background-size: 88px 24px;
+    }
+}
+```
+
+#### Обычные спрайты
+
+Для подключения иконки используется примесь `sprite` со значением `$icon`, где `icon` это название PNG иконки, например:
+```css
+.joy
+    sprite $joy
+```
+
+В собранном виде в CSS добавится только обычный спрайт и это будет выглядеть так:
+```css
+.joy {
+    background-image: url("../images/sprites/emoji.png");
+    background-position: 32px 0px;
+    width: 24px;
+    height: 24px;
+}
+```
