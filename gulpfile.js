@@ -124,9 +124,8 @@ gulp.task('img', function() {
   --- SPRITES ---
 */
 
-// var cwd = path.join(__dirname, '..');
 var spritesDirPath = 'src/img/sprites';
-var imgPath = '../img/sprites/';
+var imgPath = 'img/sprites/';
 var tmplName = 'scss_retina.template.handlebars';
 var tmplPath = './node_modules/spritesheet-templates/lib/templates/';
 var cssTemplate = tmplPath + tmplName;
