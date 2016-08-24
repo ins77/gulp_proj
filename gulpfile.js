@@ -266,7 +266,7 @@ gulp.task('style', ['styletest'], function() {
 
 
 gulp.task('del', function() {
-  return del([path.join(buildPath), path.join(srcPath, 'sass/_global/svg-sprite.scss')]).then(paths => {
+  return del([path.join(buildPath), path.join(srcPath, 'sass/_global/svg-sprite.scss'), path.join(srcPath, 'sass/_global/sprites')]).then(paths => {
     console.log('Deleted files and folders:\n', paths.join('\n'));
   });
 });
@@ -321,6 +321,7 @@ if (!isOnProduction) {
 gulp.task('default', allTasks, function() {
   if (!isOnProduction) {
     gulp.watch('**/*.js', {cwd: path.join(srcPath, 'js')}, ['js', server.reload]);
+    gulp.watch('sprites/**/*.{jpg,png}', {cwd: path.join(srcPath, 'img')}, ['sprites', server.reload]);
     gulp.watch('svg-sprite/*.svg', {cwd: path.join(srcPath, 'img')}, ['svg', server.reload]);
     gulp.watch(['!svg-sprite', '!svg-sprite/**', '!inline', '!inline/**', '**/*.{jpg,png,svg}'], {cwd: path.join(srcPath, 'img')}, ['img', server.reload]);
     gulp.watch('**/*{woff,woff2}', {cwd: path.join(srcPath, 'fonts')}, ['font', server.reload]);
